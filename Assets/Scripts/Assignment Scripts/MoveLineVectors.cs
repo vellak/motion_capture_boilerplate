@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Numerics;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -41,23 +41,53 @@ namespace Assignment_Scripts
             } 
         }
 
-        private class Vector3Tuple
+        [Serializable]
+        private struct Vector3Tuple
         {
-            
-            
-            private readonly Vector3 _A;
-            private readonly Vector3 _B;
+            private readonly Vector3 _a;
+            private readonly Vector3 _b;
             public Vector3Tuple(Vector3 a,Vector3 b)
             {
-                _A = a;
-                _B = b;
+                _a = a;
+                _b = b;
             }
 
             public List<Vector3> GetValues()
             {
-                var list = new List<Vector3> {_A, _B};
+                var list = new List<Vector3> {_a, _b};
                 return list;
             }
+
+            public Vector3 GetDirectionVector3(VectorDirection direction)
+            {
+                switch (direction)
+                {
+                    // Gets the direction of the two vector points
+                    
+                    case VectorDirection.AToB:
+                    {
+                        var dx = _a.x - _b.x;
+                        var dy = _a.y - _b.y;
+                        var dz = _a.z - _b.z;
+                        return  new Vector3(dx,dy,dz);
+                    }
+                    case VectorDirection.BToA:
+                    {
+                        var dx = _b.x - _a.x;
+                        var dy = _b.y - _a.y;
+                        var dz = _b.z - _a.z;
+                        return  new Vector3(dx,dy,dz);
+                    }
+                    default:
+                        throw new Exception();
+                }
+            }
+            public enum VectorDirection
+            {
+                AToB,
+                BToA
+            }
+            
         }
         /*
          * ANIMATION STUFF

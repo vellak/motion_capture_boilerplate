@@ -16,18 +16,12 @@ namespace Assignment_Scripts
 
         private byte Index { get; }
         public Body BodyClass { get; set; }
-
-        private  CameraSpacePoint GetCameraSpacePoint(JointType index)
+        
+        private Vector3 ConvertJointPositionToVector(JointType index )
         {
-            return BodyClass.Joints[index].Position;
-        }
-
-        private Vector3 ConvertJointPositionToVector(JointType i )
-        {
-            CameraSpacePoint position = GetCameraSpacePoint(i);
+            var position = BodyClass.Joints[index].Position;
             return new Vector3(position.X * 10, position.Y * 10, position.Z * 10);
         }
-        
         
         //Returns a Vector3 value of the requested 
         public Vector3 GetJointPosition(JointType index)
