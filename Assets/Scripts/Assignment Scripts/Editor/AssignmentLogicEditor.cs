@@ -1,4 +1,5 @@
 ﻿#pragma warning disable 618
+using Assignment_Scripts.enums;
 using UnityEditor;
 using UnityEngine;
 using static UnityEditor.ReplacePrefabOptions;
@@ -8,7 +9,7 @@ namespace Assignment_Scripts.Editor
     [CustomEditor(typeof(LogicManager))]
     public class AssignmentLogicEditor : UnityEditor.Editor
     {
-        public Data.Characters member;
+        public Characters member;
 
 
         private LogicManager _Manager;
@@ -17,9 +18,9 @@ namespace Assignment_Scripts.Editor
             base.OnInspectorGUI();
 
             _Manager = (LogicManager) target;
-            if (_Manager.typeToPrint == LogicManager.TypeToPrint.NewBandMember)
+            if (_Manager.typeToPrint == LogicManager.TypeToPrint.NewCharacter)
             {
-                member = (Data.Characters) EditorGUILayout.EnumPopup("Choose Band Member", member);
+                member = (Characters) EditorGUILayout.EnumPopup("Choose Band Member", member);
                 _Manager.characterToSerialize = member;
                 
                 
@@ -40,7 +41,7 @@ namespace Assignment_Scripts.Editor
                 if (EditorApplication.isPlaying)
                 {
                     _Manager.GetAndSaveValues();
-                    if (_Manager.typeToPrint == LogicManager.TypeToPrint.NewBandMember)
+                    if (_Manager.typeToPrint == LogicManager.TypeToPrint.NewCharacter)
                     {
                         loadBody(_Manager.characterToSerialize);
                     }
@@ -50,7 +51,7 @@ namespace Assignment_Scripts.Editor
             }
         }
         
-        private void loadBody(Data.Characters character)
+        private void loadBody(Characters character)
         {
             if (!(FindObjectsOfType(typeof(GameObject)) is GameObject[] gameObjects)) return;
             foreach (var Object in gameObjects)

@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using Assignment_Scripts.enums;
+using UnityEngine;
 
 namespace Assignment_Scripts
 {
     public class CreateTarget : MonoBehaviour
     {
-        [SerializeField] private Data.Characters character;
+        [SerializeField] private Characters character;
 
         [SerializeField] private LogicManager manager;
 
@@ -28,7 +29,7 @@ namespace Assignment_Scripts
         // Update is called once per frame
         private void Update()
         {
-            if (character.Equals(manager.characterToSerialize) || comparer.systemChoice.Equals(Data.SystemToUse.System4))
+            if (character.Equals(manager.characterToSerialize) || comparer.systemChoice.Equals(Systems.System4))
             {
                 // run it once only if the object isn't created but check for updates every frame
                 if (!_isCreated)

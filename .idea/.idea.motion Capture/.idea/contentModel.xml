@@ -30,6 +30,10 @@
               <e p="AssignmentLogicEditor.cs" t="Include" />
               <e p="CompareUiEditor.cs" t="Include" />
             </e>
+            <e p="enums" t="Include">
+              <e p="Characters.cs" t="Include" />
+              <e p="Systems.cs" t="Include" />
+            </e>
             <e p="ImageViewer.cs" t="Include" />
             <e p="LogicManager.cs" t="Include" />
             <e p="MoveLineVectors.cs" t="Include" />

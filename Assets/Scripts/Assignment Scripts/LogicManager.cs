@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Windows.Kinect;
+using Assignment_Scripts.enums;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -15,7 +16,7 @@ namespace Assignment_Scripts
             FullDebug,
             Vectors,
             VectorsNormalised,
-            NewBandMember,
+            NewCharacter,
             All
         }
 
@@ -25,7 +26,7 @@ namespace Assignment_Scripts
         private Printing _printer;
         [HideInInspector] public bool normDebug;
 
-       [HideInInspector] [Space] public Data.Characters characterToSerialize;
+       [HideInInspector] [Space] public Characters characterToSerialize;
 
         public BodySourceManager bodyManager;
 
@@ -118,10 +119,10 @@ namespace Assignment_Scripts
                         Print(TypeToPrint.FullDebug, debug);
                         break;
                     }
-                    case TypeToPrint.NewBandMember:
+                    case TypeToPrint.NewCharacter:
 
 
-                        Print(TypeToPrint.NewBandMember, normalizedPositions);
+                        Print(TypeToPrint.NewCharacter, normalizedPositions);
                         break;
                     default:
                     {
@@ -172,7 +173,7 @@ namespace Assignment_Scripts
                     break;
                 }
 
-                case TypeToPrint.NewBandMember:
+                case TypeToPrint.NewCharacter:
                 {
                     _printer.FileStreamField =
                         File.Create(dataFile.bandFilePath + dataFile.GetCharacterFile(characterToSerialize));

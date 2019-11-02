@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Windows.Kinect;
+using Assignment_Scripts.enums;
 using UnityEngine;
-using Joint = Windows.Kinect.Joint;
 
 namespace Assignment_Scripts
 {
@@ -13,8 +13,9 @@ namespace Assignment_Scripts
         [SerializeField] private LogicManager manager;
         [NonSerialized] public double MatchTolerance = .2;
         public Data data;
-        [HideInInspector] public Data.Characters member = Data.Characters.Freddie;
-        [Header("COMPARE SETTINGS")] public Data.SystemToUse systemChoice;
+        
+        [HideInInspector] public Characters member = Characters.Freddie;
+        [Header("COMPARE SETTINGS")] public Systems systemChoice;
         [SerializeField] private bool doDebug;
 
         public void RunSystem()
@@ -22,28 +23,26 @@ namespace Assignment_Scripts
             switch (systemChoice)
             {
                 // takes in an enum of type System and runs teh appropriate method to each of the enum values
-                case Data.SystemToUse.System2:
+                case Systems.System2:
                 {
                     System2(manager.BodyWrappers[0].GetAllJointPositions(), GetBody());
                     break;
                 }
-                case Data.SystemToUse.System3:
+                case Systems.System3:
                 {
                     System3(manager.BodyWrappers[0].GetAllJointPositions(), GetBody());
                     break;
                 }
-                case Data.SystemToUse.System4:
+                case Systems.System4:
                 {
                     if (compareMultipleBodies)
                     {
                         var value = System4(manager.BodyWrappers[0].GetAllJointPositions(), getBodyList());
                         if (value !=null)
                         {
-
                             Debug.Log(value);
                         }
                     }
-
                     break;
                 }
                 default:
@@ -95,7 +94,7 @@ namespace Assignment_Scripts
             }
         }
 
-        private Data.Characters? System4(List<Vector3> liveInput, IList<List<Vector3>> targets)
+        private Characters? System4(List<Vector3> liveInput, IList<List<Vector3>> targets)
         {
             /* take in an input of a list of Vector3 lists called A and a single vector3 list called B
              * compare each value in B to every value in each list of A 
@@ -109,7 +108,7 @@ namespace Assignment_Scripts
                 // ReSharper disable once PossibleMultipleEnumeration
                 if (System2(targetBody, liveInput))
                 {
-                    return (Data.Characters) targets.IndexOf(targetBody);
+                    return (Characters) targets.IndexOf(targetBody);
                 }
             }
             return null;
@@ -142,13 +141,13 @@ namespace Assignment_Scripts
         {
             switch (member)
             {
-                case Data.Characters.Freddie:
+                case Characters.Freddie:
                     return Printing.LoadData(data.bandFilePath, data.freddieFile);
-                case Data.Characters.Roger:
+                case Characters.Roger:
                     return Printing.LoadData(data.bandFilePath, data.rogerFile);
-                case Data.Characters.Brian:
+                case Characters.Brian:
                     return Printing.LoadData(data.bandFilePath, data.brianFile);
-                case Data.Characters.John:
+                case Characters.John:
                     return Printing.LoadData(data.bandFilePath, data.johnFile);
                 default:
                     throw new ArgumentOutOfRangeException();
