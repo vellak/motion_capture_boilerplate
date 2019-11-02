@@ -12,8 +12,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{2274F3C4-F201-22EC-A310-2DA72F932273}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -58,13 +57,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Assignment Scripts\LogicManager.cs" />
-    <Compile Include="Assets\Scripts\Assignment Scripts\BandMembers.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\BodyWrapper.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\CompareBodyPositions.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\CreateTarget.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\Data.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\ImageViewer.cs" />
+    <Compile Include="Assets\Scripts\Assignment Scripts\LogicManager.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\MoveLineVectors.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\NormaliseBodyCoords.cs" />
     <Compile Include="Assets\Scripts\Assignment Scripts\Printing.cs" />

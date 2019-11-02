@@ -22,7 +22,6 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Assignment Scripts" t="Include">
-            <e p="BandMembers.cs" t="Include" />
             <e p="BodyWrapper.cs" t="Include" />
             <e p="CompareBodyPositions.cs" t="Include" />
             <e p="CreateTarget.cs" t="Include" />

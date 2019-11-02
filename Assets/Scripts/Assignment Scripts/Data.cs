@@ -47,14 +47,19 @@ namespace Assignment_Scripts
 
         public string GetCharacterFile(Characters character)
         {
-            return character switch
+            switch (character)
             {
-                Characters.Brian => brianFile,
-                Characters.Roger => rogerFile,
-                Characters.Freddie => freddieFile,
-                Characters.John => johnFile,
-                _ => throw new IOException()
-            };
+                case Characters.Brian:
+                    return brianFile;
+                case Characters.Roger:
+                    return rogerFile;
+                case Characters.Freddie:
+                    return freddieFile;
+                case Characters.John:
+                    return johnFile;
+                default:
+                    throw new IOException();
+            }
         }
     }
 }

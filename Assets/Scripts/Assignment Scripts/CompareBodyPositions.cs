@@ -140,14 +140,19 @@ namespace Assignment_Scripts
 
         private IEnumerable<Vector3> GetBody()
         {
-            return member switch
+            switch (member)
             {
-                Data.Characters.Freddie => Printing.LoadData(data.bandFilePath, data.freddieFile),
-                Data.Characters.Roger => Printing.LoadData(data.bandFilePath, data.rogerFile),
-                Data.Characters.Brian => Printing.LoadData(data.bandFilePath, data.brianFile),
-                Data.Characters.John => Printing.LoadData(data.bandFilePath, data.johnFile),
-                _ => throw new ArgumentOutOfRangeException()
-            };
+                case Data.Characters.Freddie:
+                    return Printing.LoadData(data.bandFilePath, data.freddieFile);
+                case Data.Characters.Roger:
+                    return Printing.LoadData(data.bandFilePath, data.rogerFile);
+                case Data.Characters.Brian:
+                    return Printing.LoadData(data.bandFilePath, data.brianFile);
+                case Data.Characters.John:
+                    return Printing.LoadData(data.bandFilePath, data.johnFile);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private List<List<Vector3>> getBodyList()
